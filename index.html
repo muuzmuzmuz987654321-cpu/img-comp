@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.svg" alt="Logo" class="logo">
+            <h1>Image Compressor</h1>
+            <p class="tagline">Compress your images without losing quality</p>
+        </div>
+        <div class="upload-container">
+            <div class="drop-area" id="dropArea">
+                <p>Drag & Drop images here or</p>
+                <label for="fileInput" class="upload-btn">Select Files</label>
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            </div>
+        </div>
+
+        <div class="settings">
+            <div class="setting">
+                <label for="quality">Quality:</label>
+                <input type="range" id="quality" min="1" max="100" value="75">
+                <span id="qualityValue">75%</span>
+            </div>
+            <div class="setting">
+                <label for="maxWidth">Max Width:</label>
+                <input type="number" id="maxWidth" min="100" value="1920">
+                <span>px</span>
+            </div>
+            <div class="setting">
+                <label for="maxHeight">Max Height:</label>
+                <input type="number" id="maxHeight" min="100" value="1080">
+                <span>px</span>
+            </div>
+            <div class="setting">
+                <label for="format">Format:</label>
+                <select id="format">
+                    <option value="jpeg">JPEG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WebP</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="images-container" id="imagesContainer"></div>
+
+        <div class="actions">
+            <button id="compressBtn" disabled>Compress All</button>
+            <button id="downloadAllBtn" disabled>Download All</button>
+        </div>
+    </div>
+
+    <template id="imageTemplate">
+        <div class="image-item">
+            <div class="image-preview">
+                <img src="" alt="Preview">
+            </div>
+            <div class="image-info">
+                <div class="filename">filename.jpg</div>
+                <div class="size-info">
+                    <span class="original-size">Original: 2.5 MB</span>
+                    <span class="compressed-size">Compressed: 0.5 MB</span>
+                    <span class="savings">Saved: 80%</span>
+                </div>
+            </div>
+            <div class="image-actions">
+                <button class="compress-btn">Compress</button>
+                <button class="download-btn" disabled>Download</button>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
